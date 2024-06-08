@@ -12,7 +12,6 @@ window = Gui.Window("My Todos App", layout=[[Label, TextBox, add_button], [ListB
                     font=("Arial", 10))
 
 
-
 while True:
     event, value = window.read()
     match event:
