@@ -18,10 +18,20 @@ while True:
     match event:
         case "ADD":
             todos = mainFunctions.todo_list()
-            new_todo = value["todo"]
+            new_todo = value["todo"] + "\n"
             todos.append(new_todo)
             mainFunctions.write_todos(todos)
+            window['todos'].update(todos)
         case "Edit":
-            
+            todo_to_edit = value["todos"][0]
+            new_todo = value["todo"]
+            todos = mainFunctions.todo_list()
+            index = todos.index(todo_to_edit)
+            todos[index] = new_todo
+            mainFunctions.write_todos(todos)
+            window['todos'].update(todos)
+        case "todos":
+            window["todo"].update(value=value['todos'][0])
+
         case Gui.WINDOW_CLOSED:
             break

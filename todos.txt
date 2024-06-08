@@ -1,8 +1,8 @@
+Wake Up
 Brush
 Bath
 Dress
-Go To School
-Come Home
-Prepare To Sleep
-Wake Up Again
-Master PythonClose ClassClose ClassClose ClassClose Class
+Eat
+Go to School
+Master Python
+Go Home
