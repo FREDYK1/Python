@@ -6,11 +6,11 @@ Gui.theme("DarkBlue10")
 
 Label = Gui.Text("Enter Your Todo:")
 TextBox = Gui.InputText(tooltip="Enter Todo Here", key="todo")
-add_button = Gui.Button("ADD")
+add_button = Gui.Button(key="ADD", image_source="add.png", mouseover_colors="White")
 EditButton = Gui.Button("Edit")
 ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
-CompleteButton = Gui.Button("Complete")
+CompleteButton = Gui.Button(key="Complete", image_source='complete.png', mouseover_colors="White")
 ExitButton = Gui.Button("Exit", button_color="Red")
 ClockTime = Gui.Text("", key="Clock")
 
@@ -18,12 +18,12 @@ window = Gui.Window("My Todos App", layout=[[ClockTime],
                                             [Label, TextBox, add_button],
                                             [ListBox, EditButton, CompleteButton],
                                             [ExitButton]],
-                                            font=("Arial", 10))
+                    font=("Arial", 10))
 
 
 while True:
     event, value = window.read(timeout=1000)
-    window["Clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
+    window["Clock"].update(values=time.strftime("%b %d, %Y %H:%M:%S"))
     match event:
         case "ADD":
             todos = mainFunctions.todo_list()
