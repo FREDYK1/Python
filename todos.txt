@@ -6,4 +6,3 @@ Eat
 Go to School
 Master Python
 Go Home
-Come to Github bootcamp

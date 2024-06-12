@@ -7,13 +7,16 @@ add_button = Gui.Button("ADD")
 EditButton = Gui.Button("Edit")
 ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
+CompleteButton = Gui.Button("Complete")
 
-window = Gui.Window("My Todos App", layout=[[Label, TextBox, add_button], [ListBox, EditButton]],
+window = Gui.Window("My Todos App", layout=[[Label, TextBox, add_button],
+                                            [ListBox, EditButton, CompleteButton]],
                     font=("Arial", 10))
 
 
 while True:
     event, value = window.read()
+    print(event, value)
     match event:
         case "ADD":
             todos = mainFunctions.todo_list()
@@ -29,6 +32,13 @@ while True:
             todos[index] = new_todo
             mainFunctions.write_todos(todos)
             window['todos'].update(todos)
+        case "Complete":
+            TodoToComplete = value["todos"][0]
+            todos = mainFunctions.todo_list()
+            todos.remove(TodoToComplete)
+            mainFunctions.write_todos(todos)
+            window["todos"].update(values=todos)
+            window["todo"].update(value='')
         case "todos":
             window["todo"].update(value=value['todos'][0])
 
