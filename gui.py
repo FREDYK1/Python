@@ -8,9 +8,11 @@ EditButton = Gui.Button("Edit")
 ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
 CompleteButton = Gui.Button("Complete")
+ExitButton = Gui.Button("Exit")
 
 window = Gui.Window("My Todos App", layout=[[Label, TextBox, add_button],
-                                            [ListBox, EditButton, CompleteButton]],
+                                            [ListBox, EditButton, CompleteButton],
+                                            [ExitButton]],
                     font=("Arial", 10))
 
 
@@ -39,6 +41,8 @@ while True:
             mainFunctions.write_todos(todos)
             window["todos"].update(values=todos)
             window["todo"].update(value='')
+        case "Exit":
+            break
         case "todos":
             window["todo"].update(value=value['todos'][0])
 
