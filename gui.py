@@ -27,20 +27,26 @@ while True:
             mainFunctions.write_todos(todos)
             window['todos'].update(todos)
         case "Edit":
-            todo_to_edit = value["todos"][0]
-            new_todo = value["todo"]
-            todos = mainFunctions.todo_list()
-            index = todos.index(todo_to_edit)
-            todos[index] = new_todo
-            mainFunctions.write_todos(todos)
-            window['todos'].update(todos)
+            try:
+                todo_to_edit = value["todos"][0]
+                new_todo = value["todo"]
+                todos = mainFunctions.todo_list()
+                index = todos.index(todo_to_edit)
+                todos[index] = new_todo
+                mainFunctions.write_todos(todos)
+                window['todos'].update(todos)
+            except IndexError:
+                Gui.popup("Select a todo to edit.", font=("Helvetica", 15))
         case "Complete":
-            TodoToComplete = value["todos"][0]
-            todos = mainFunctions.todo_list()
-            todos.remove(TodoToComplete)
-            mainFunctions.write_todos(todos)
-            window["todos"].update(values=todos)
-            window["todo"].update(value='')
+            try:
+                TodoToComplete = value["todos"][0]
+                todos = mainFunctions.todo_list()
+                todos.remove(TodoToComplete)
+                mainFunctions.write_todos(todos)
+                window["todos"].update(values=todos)
+                window["todo"].update(value='')
+            except IndexError:
+                Gui.popup("Select a completed todo", font=("Helvetica", 15))
         case "Exit":
             break
         case "todos":
