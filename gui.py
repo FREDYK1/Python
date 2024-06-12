@@ -1,5 +1,8 @@
 import mainFunctions
 import FreeSimpleGUI as Gui
+import time
+
+Gui.theme("DarkBlue10")
 
 Label = Gui.Text("Enter Your Todo:")
 TextBox = Gui.InputText(tooltip="Enter Todo Here", key="todo")
@@ -8,17 +11,19 @@ EditButton = Gui.Button("Edit")
 ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
 CompleteButton = Gui.Button("Complete")
-ExitButton = Gui.Button("Exit")
+ExitButton = Gui.Button("Exit", button_color="Red")
+ClockTime = Gui.Text("", key="Clock")
 
-window = Gui.Window("My Todos App", layout=[[Label, TextBox, add_button],
+window = Gui.Window("My Todos App", layout=[[ClockTime],
+                                            [Label, TextBox, add_button],
                                             [ListBox, EditButton, CompleteButton],
                                             [ExitButton]],
-                    font=("Arial", 10))
+                                            font=("Arial", 10))
 
 
 while True:
-    event, value = window.read()
-    print(event, value)
+    event, value = window.read(timeout=1000)
+    window["Clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     match event:
         case "ADD":
             todos = mainFunctions.todo_list()
