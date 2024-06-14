@@ -16,10 +16,13 @@ while True:
     event, value = window.read()
     match event:
         case "Convert":
-            feets = float(value["Feet"])
-            inches = float(value["Inches"])
-            meter = ConverterBackend.conv(feets, inches)
-            window["CompletionText"].update(value=f"{feets}feets and {inches}inches is {meter}m")
+            try:
+                feets = float(value["Feet"])
+                inches = float(value["Inches"])
+                meter = ConverterBackend.conv(feets, inches)
+                window["CompletionText"].update(value=f"{feets}feets and {inches}inches is {meter}m")
+            except ValueError:
+                Gui.popup("Enter feets and inches!", font=("Cooper Black", 16))
         case "Exit":
             break
         case Gui.WINDOW_CLOSED:
