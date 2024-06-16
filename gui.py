@@ -1,16 +1,21 @@
 import mainFunctions
 import FreeSimpleGUI as Gui
 import time
+import os
+
+if not os.path.exists("Todos.txt"):
+    with open("Todos.txt", 'w') as file:
+        pass
 
 Gui.theme("DarkBlue10")
 
 Label = Gui.Text("Enter Your Todo:")
 TextBox = Gui.InputText(tooltip="Enter Todo Here", key="todo")
-add_button = Gui.Button(key="ADD", image_source="add.png", mouseover_colors="White")
+add_button = Gui.Button("Add", key="ADD", )
 EditButton = Gui.Button("Edit")
 ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
-CompleteButton = Gui.Button(key="Complete", image_source='complete.png', mouseover_colors="White")
+CompleteButton = Gui.Button("Complete", key="Complete")
 ExitButton = Gui.Button("Exit", button_color="Red")
 ClockTime = Gui.Text("", key="Clock")
 
@@ -22,8 +27,8 @@ window = Gui.Window("My Todos App", layout=[[ClockTime],
 
 
 while True:
-    event, value = window.read(timeout=1000)
-    window["Clock"].update(values=time.strftime("%b %d, %Y %H:%M:%S"))
+    event, value = window.read(timeout=200)
+    window["Clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     match event:
         case "ADD":
             todos = mainFunctions.todo_list()
@@ -56,6 +61,8 @@ while True:
             break
         case "todos":
             window["todo"].update(value=value['todos'][0])
-
         case Gui.WINDOW_CLOSED:
             break
+
+window.close()
+
