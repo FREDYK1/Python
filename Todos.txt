@@ -1,2 +1,8 @@
 Wake Up
 Brush Teeth
+Bath
+Dress
+Cook
+Eat
+Go to School
+

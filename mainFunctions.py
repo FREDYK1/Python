@@ -1,3 +1,4 @@
+import streamlit as sl
 FILEPATH = "todos.txt"
 
 
@@ -12,3 +13,5 @@ def write_todos(todos_arg, filename=FILEPATH):
     """A function that writes and stores it in a file"""
     with open(filename, 'w') as file_writen:
         file_writen.writelines(todos_arg)
+
+
