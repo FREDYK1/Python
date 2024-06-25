@@ -5,3 +5,5 @@ Dress
 Cook
 Eat
 Go to School
+Cooking
+Playing

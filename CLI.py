@@ -10,14 +10,24 @@ while True:
     user_input = user_input.capitalize()
 
     if user_input.startswith("Enter"):
-        user_input = user_input[6:] + "\n"
-        user_input = user_input.title()
+        if user_input == "Enter":
+            user_input = input("What is your new todo : ")
+            user_input = user_input.title()
 
-        todos = mainFunctions.todo_list()
+            todos = mainFunctions.todo_list()
 
-        todos.append(user_input)
+            todos.append(user_input)
 
-        mainFunctions.write_todos(todos)
+            mainFunctions.write_todos(todos)
+        else:
+            user_input = user_input[6:] + "\n"
+            user_input = user_input.title()
+
+            todos = mainFunctions.todo_list()
+
+            todos.append(user_input)
+
+            mainFunctions.write_todos(todos)
 
     elif user_input.startswith("Print"):
 
