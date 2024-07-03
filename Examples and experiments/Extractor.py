@@ -5,10 +5,10 @@ Gui.theme("DarkPurple3")
 
 Label1 = Gui.Text("Select Files to Extract:")
 Input1 = Gui.InputText(tooltip="Where is the files you want to extract.", key="ZipFile")
-ChooseButton1 = (Gui.FilesBrowse("Choose"))
+ChooseButton1 = Gui.FilesBrowse("Choose")
 
 Label2 = Gui.Text("Select Destination Folder:")
-Input2 = (Gui.InputText(tooltip="Where will you save the extract.", key="Folder"))
+Input2 = Gui.InputText(tooltip="Where will you save the extract.", key="Folder")
 ChooseButton2 = Gui.FolderBrowse("Choose")
 CompressButton = Gui.Button("Extract", button_color="Red")
 

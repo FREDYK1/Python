@@ -1,8 +1,8 @@
 feet_inches = input("Enter feet and inches:")
 
 
-def sep(feet_inches):
-    parts = feet_inches.split(" ")
+def sep(feets_inches):
+    parts = feets_inches.split(" ")
     feet = float(parts[0])
     inches = float(parts[1])
     return {"feet": feet, "inches": inches}

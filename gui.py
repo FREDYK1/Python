@@ -11,9 +11,9 @@ Gui.theme("DarkBlue10")
 
 Label = Gui.Text("Enter Your Todo:")
 TextBox = Gui.InputText(tooltip="Enter Todo Here", key="todo")
-add_button = Gui.Button("Add", key="ADD", )
+add_button = Gui.Button("Add", key="ADD")
 EditButton = Gui.Button("Edit")
-ListBox = Gui.Listbox(values=mainFunctions.todo_list(), size=(45, 10),
+ListBox = Gui.Listbox(values = mainFunctions.todo_list(), size=(45, 10),
                       enable_events=True, key="todos")
 CompleteButton = Gui.Button("Complete", key="Complete")
 ExitButton = Gui.Button("Exit", button_color="Red")

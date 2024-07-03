@@ -7,5 +7,5 @@ def zip_maker(filepaths, dest_dir):
     with zipfile.ZipFile(dest_path, 'w') as archive:
         for filepath in filepaths:
             filepath = pathlib.Path(filepath)
-            archive.write(filepath, arcname= filepath.name)
+            archive.write(filepath, arcname=filepath.name)
 

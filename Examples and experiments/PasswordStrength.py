@@ -19,7 +19,7 @@ upper = False
 for i in user_input:
     if i.isupper():
         upper = True
-result["upper"]= upper
+result["upper"] = upper
 print(result)
 # Tell the user whether the password is strong or not
 
